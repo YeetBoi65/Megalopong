@@ -4,23 +4,33 @@ import sys
 screen = pygame.display.set_mode((400,400))
 pygame.display.set_caption("Megalopong")
 
+
 posX = 150
 posY = 150
 
 blockX = 30
-blockY = 30
+blockY = 100
+
+block2X = 360
+block2Y = 0
 
 width = 10
 height = 100
 
-block2X = 360
-block2Y = 30
-
-
-FPS = 180
+FPS = 60
 clock = pygame.time.Clock()
 
-moveUp = False
+moveUp1 = True
+moveDown1 = False
+moveLeft1 = False
+moveRight1 = False
+
+moveUp2 = True
+moveDown2 = False
+moveLeft2 = False
+moveRight2 = False
+
+moveUp = True
 moveDown = False
 moveLeft = False
 moveRight = False
@@ -32,7 +42,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
+    
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 moveUp = True
@@ -54,6 +64,32 @@ while True:
                 moveUp = False
                 moveDown = False
                 moveLeft = False
+    
+
+    if blockY >= 0 and moveUp1:
+        blockY -= 10
+        if blockY < 0:
+            moveUp1 = False
+            moveDown1 = True
+    elif (blockY + 100) <= 400 and moveDown1:
+        blockY += 10
+    else:
+        moveUp1 = True
+        moveDown1 = False
+
+
+    if block2Y >= 0 and moveUp2:
+        block2Y -= 10
+        if block2Y < 0:
+            moveUp2 = False
+            moveDown2 = True
+    elif (block2Y + 100) <= 400 and moveDown2:
+        block2Y += 10
+    else:
+        moveUp2 = True
+        moveDown2 = False
+        
+    
     if moveUp and posY >= 15:
         posY -= 5
     elif moveDown and posY <=400 - 15:
@@ -62,11 +98,12 @@ while True:
         posX -= 5
     elif moveRight and posX <= 400 - 15:
         posX += 5
+    
+
+        
     screen.fill((0,0,0))
     pygame.draw.circle(screen,(255,0,0), (int(posX),int(posY)), 10)
     pygame.draw.rect(screen, (255,255,255), (int(blockX), int(blockY),width,height))
     pygame.draw.rect(screen, (255,255,255), (int(block2X), int(block2Y),width,height))
 
     pygame.display.update()
-
-
