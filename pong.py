@@ -64,7 +64,13 @@ while True:
                 moveUp = False
                 moveDown = False
                 moveLeft = False
-    
+    if any(blockY<= Y <= blockY+100 for Y in range(posX-10, posX+10)) and blockX == (posX+10):
+        pygame.quit()
+        sys.exit()
+
+    if any(block2Y<= Y <= block2Y+100 for Y in range(posX-10, posX+10)) and block2X + 10 == (posX+10):
+        pygame.quit()
+        sys.exit()
 
     if blockY >= 0 and moveUp1:
         blockY -= 10
