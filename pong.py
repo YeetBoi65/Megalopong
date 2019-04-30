@@ -105,7 +105,7 @@ while True:
     elif moveRight and posX <= 400 - 15:
         posX += 5
     
-
+#grapes
         
     screen.fill((0,0,0))
     pygame.draw.circle(screen,(255,0,0), (int(posX),int(posY)), 10)
