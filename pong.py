@@ -64,11 +64,11 @@ while True:
                 moveUp = False
                 moveDown = False
                 moveLeft = False
-    if any(blockY<= Y <= blockY+100 for Y in range(posX-10, posX+10)) and blockX == (posX+10):
+    if any(blockY<= Y <= blockY+height for Y in range(posY-10, posY+10)) and blockX + 10 == (posX+10) or blockX-10 == (posX) :
         pygame.quit()
         sys.exit()
 
-    if any(block2Y<= Y <= block2Y+100 for Y in range(posX-10, posX+10)) and block2X + 10 == (posX+10):
+    if any(block2Y<= Y <= block2Y+height for Y in range(posY-10, posY+10)) and block2X + 10 == (posX+10):
         pygame.quit()
         sys.exit()
 
@@ -105,7 +105,7 @@ while True:
     elif moveRight and posX <= 400 - 15:
         posX += 5
     
-#grapes
+
         
     screen.fill((0,0,0))
     pygame.draw.circle(screen,(255,0,0), (int(posX),int(posY)), 10)
