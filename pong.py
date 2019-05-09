@@ -64,7 +64,8 @@ while True:
                 moveUp = False
                 moveDown = False
                 moveLeft = False
-    if any(blockY<= Y <= blockY+height for Y in range(posY-10, posY+10)) and blockX + 10 == (posX+10) or blockX-10 == (posX) :
+                
+    if any(blockY<= Y <= blockY+height for Y in range(posY-10, posY+10)) and any (blockX <= X <= (blockX + width) for X in range(posX-10, posX+10)):
         pygame.quit()
         sys.exit()
 
