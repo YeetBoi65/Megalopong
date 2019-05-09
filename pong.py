@@ -64,15 +64,18 @@ while True:
                 moveUp = False
                 moveDown = False
                 moveLeft = False
-                
+
+    ### Left Platform Collision            
     if any(blockY<= Y <= blockY+height for Y in range(posY-10, posY+10)) and any (blockX <= X <= (blockX + width) for X in range(posX-10, posX+10)):
         pygame.quit()
         sys.exit()
-
-    if any(block2Y<= Y <= block2Y+height for Y in range(posY-10, posY+10)) and block2X + 10 == (posX+10):
+        
+    ### Right Platform Collision
+    if any(block2Y<= Y <= block2Y+height for Y in range(posY-10, posY+10)) and any (block2X <= X <= (block2X + width) for X in range(posX-10, posX+10)):
         pygame.quit()
         sys.exit()
 
+    ### Left Platform Movement
     if blockY >= 0 and moveUp1:
         blockY -= 10
         if blockY < 0:
@@ -84,7 +87,7 @@ while True:
         moveUp1 = True
         moveDown1 = False
 
-
+    ### Right Platform Movement
     if block2Y >= 0 and moveUp2:
         block2Y -= 10
         if block2Y < 0:
@@ -96,7 +99,7 @@ while True:
         moveUp2 = True
         moveDown2 = False
         
-    
+    ### Ball Movement
     if moveUp and posY >= 15:
         posY -= 5
     elif moveDown and posY <=400 - 15:
